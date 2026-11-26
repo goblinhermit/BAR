@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day Counter</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f9;
+    }
+    .counter-box {
+      background: white;
+      padding: 2rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .number {
+      font-size: 4rem;
+      font-weight: bold;
+      color: #2563eb;
+      margin: 0;
+    }
+    .label {
+      font-size: 1.2rem;
+      color: #555;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="counter-box">
+    <p class="number" id="day-count">0</p>
+    <p class="label" id="day-label">Days</p>
+  </div>
+
+  <script>
+    // 1. Set your target date (Format: YYYY-MM-DD)
+    const targetDate = new Date("2027-01-01T00:00:00");
+    
+    // 2. Choose mode: "countdown" (days until) or "countup" (days since)
+    const mode = "countdown"; 
+
+    function updateCounter() {
+      const now = new Date();
+      // Number of milliseconds in one full day
+      const msPerDay = 1000 * 60 * 60 * 24; 
+
+      if (mode === "countdown") {
+        const diff = targetDate - now;
+        const days = Math.ceil(diff / msPerDay);
+        
+        document.getElementById("day-count").innerText = days > 0 ? days : 0;
+        document.getElementById("day-label").innerText = days === 1 ? "Day Remaining" : "Days Remaining";
+      } else {
+        const diff = now - targetDate;
+        const days = Math.floor(diff / msPerDay);
+        
+        document.getElementById("day-count").innerText = days > 0 ? days : 0;
+        document.getElementById("day-label").innerText = days === 1 ? "Day Since" : "Days Since";
+      }
+    }
+
+    // Run immediately, then check every minute to keep it accurate
+    updateCounter();
+    setInterval(updateCounter, 60000);
+  </script>
+
+</body>
+</html>
