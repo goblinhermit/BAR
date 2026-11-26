@@ -2,16 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Day Counter</title>
+  <title>Bureau of Adult Responsibilities</title>
   <style>
     body {
-      font-family: system-ui, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      font-family: "Comic Sans MS", cursive;
       margin: 0;
-      background-color: #f4f4f9;
+      background-color: #8a8af2;
     }
     .counter-box {
       background: white;
@@ -23,7 +19,7 @@
     .number {
       font-size: 4rem;
       font-weight: bold;
-      color: #2563eb;
+      color: #84a162;
       margin: 0;
     }
     .label {
@@ -37,7 +33,7 @@
 
   <div class="counter-box">
     <p class="number" id="day-count">0</p>
-    <p class="label" id="day-label">Days</p>
+    <p class="label" id="day-label">Days of Operation</p>
   </div>
 
   <script>
@@ -63,7 +59,7 @@
         const days = Math.floor(diff / msPerDay);
         
         document.getElementById("day-count").innerText = days > 0 ? days : 0;
-        document.getElementById("day-label").innerText = days === 1 ? "Day Since" : "Days Since";
+        document.getElementById("day-label").innerText = days === 1 ? "Day of" : "Days of";
       }
     }
 
