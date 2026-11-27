@@ -40,25 +40,15 @@
   </div>
 
   <script>
-    // 1. Set your target date (Format: YYYY-MM-DD)
+    // Bureau Day 1: 2026-11-25
     const targetDate = new Date("2026-11-25T00:00:00");
-    
-    // 2. Choose mode: "countdown" (days until) or "countup" (days since)
-    const mode = "countup"; 
 
     function updateCounter() {
-      const now = new Date();
-      // Number of milliseconds in one full day
-      const msPerDay = 1000 * 60 * 60 * 24; 
+    const now = new Date();
 
-      if (mode === "countdown") {
-        const diff = targetDate - now;
-        const days = Math.ceil(diff / msPerDay);
-        
-        document.getElementById("day-count").innerText = days > 0 ? days : 0;
-        document.getElementById("day-label").innerText =
-    "Bureau Day";
-      } else {
+    // Number of milliseconds in one full day
+    const msPerDay = 1000 * 60 * 60 * 24;
+
     const diff = now - targetDate;
     const days = Math.floor(diff / msPerDay) + 1;
 
@@ -67,7 +57,6 @@
 
     document.getElementById("day-label").innerText =
         "Bureau Day";
-}
     }
 
     // Run immediately, then check every minute to keep it accurate
