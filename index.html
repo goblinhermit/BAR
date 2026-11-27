@@ -35,8 +35,8 @@
 <body>
 
   <div class="counter-box">
+     <p class="label" id="day-label">Bureau Day</p>
     <p class="number" id="day-count">0</p>
-    <p class="label" id="day-label">Days of Operation</p>
   </div>
 
   <script>
@@ -56,14 +56,18 @@
         const days = Math.ceil(diff / msPerDay);
         
         document.getElementById("day-count").innerText = days > 0 ? days : 0;
-        document.getElementById("day-label").innerText = days === 1 ? "Day Remaining" : "Days Remaining";
+        document.getElementById("day-label").innerText =
+    "Bureau Day";
       } else {
-        const diff = now - targetDate;
-        const days = Math.floor(diff / msPerDay);
-        
-        document.getElementById("day-count").innerText = days > 0 ? days : 0;
-        document.getElementById("day-label").innerText = days === 1 ? "Day of Operation" : "Days of Operation";
-      }
+    const diff = now - targetDate;
+    const days = Math.floor(diff / msPerDay) + 1;
+
+    document.getElementById("day-count").innerText =
+        days > 0 ? days : 1;
+
+    document.getElementById("day-label").innerText =
+        "Bureau Day";
+}
     }
 
     // Run immediately, then check every minute to keep it accurate
